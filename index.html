@@ -1,61 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ballikuri Sherlie Angel - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #E2BFD9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid #5E3D79;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .description {
-            font-size: 18px;
-            color: #555;
-        }
-        .container{
-            text-align: center;
-            background-color: #F7EFE5;
-            padding: 40px;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sherlie Angel Ballikuri | Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="container">
-        <img src="sherlie.jpg" alt="Your Photo" class="profile-photo">
-        <div class="profile"></div>
-            <h1>Ballikuri Sherlie Angel</h1>
-            <p class="description">3rd Year Student at GVPCE(A)</p>
-            <p class="description">CSE with AI and ML Specializations<br>I have a passion for AI and ML</p>
-        </div>
+  <header>
+    <nav>
+      <h1>Sherlie Angel</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h2>AI/ML Enthusiast & Software Developer</h2>
+      <p>Certified Salesforce Developer | Passionate about Innovative AI Solutions</p>
     </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m an aspiring AI and software development professional currently interning at Brainmage.AI. I’ve built a Library Management System at RINL and am skilled in full-stack development and machine learning.</p>
+    <div class="info-grid">
+      <div><strong>Email:</strong> sherlieangelballikuri@gmail.com</div>
+      <div><strong>Phone:</strong> +91 7330822251</div>
+      <div><strong>Location:</strong> Visakhapatnam, Andhra Pradesh</div>
+      <div><strong>Education:</strong> B.Tech CSE (AI & ML), GVP College of Engineering – 9.53 CGPA</div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Brainmage.AI (12/2024 – Present)</h3>
+      <p>• AI research for constructing regional LLMs<br>• Built Telugu LLM using LLaMA</p>
+    </div>
+    <div class="card">
+      <h3>RINL Visakhapatnam Steel Plant (05/2024 – 06/2024)</h3>
+      <p>• Designed a full-stack Library Management System</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>MindScope - AI Depression Predictor</h3>
+      <p>ML-driven predictor using Random Forest, SVM, and Neural Networks to identify depression levels.</p>
+    </div>
+    <div class="card">
+      <h3>Food Supply to the Poor (Salesforce)</h3>
+      <p>Optimized food distribution system using Salesforce CRM tools for donor and beneficiary management.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skill-list">
+      <li>Python, C, C++</li>
+      <li>TensorFlow, Keras, PyTorch</li>
+      <li>Supervised & Unsupervised Learning, Deep Learning</li>
+      <li>HTML, CSS, Responsive Web Design</li>
+      <li>Git, GitHub, OpenCV</li>
+    </ul>
+    <h3>Personal Skills</h3>
+    <ul class="skill-list">
+      <li>Analytical Thinking</li>
+      <li>Team Collaboration</li>
+      <li>Adaptability</li>
+      <li>Communication</li>
+      <li>Problem Solving</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Let’s connect! Feel free to reach out via any of the channels below.</p>
+    <ul class="contact-list">
+      <li><strong>Email:</strong> sherlieangelballikuri@gmail.com</li>
+      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank">linkedin.com/in/sherlie-angel</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/sherlie2005" target="_blank">github.com/sherlie2005</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Sherlie Angel Ballikuri. All rights reserved.</p>
+  </footer>
 </body>
 </html>
