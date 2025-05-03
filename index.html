@@ -1,101 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sherlie Angel Ballikuri | Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sherlie Angel Ballikuri - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4e5ee4;
+            --secondary-color: #7685f2;
+            --dark-color: #202020;
+            --light-color: #f8f9fa;
+            --accent-color: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            height: 4px;
+            width: 60px;
+            background: var(--primary-color);
+        }
+        
+        .section-title.text-center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .experience-item, .education-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            z-index: 1;
+        }
+        
+        .experience-item::after, .education-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: var(--primary-color);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .experience-item:last-child::after, .education-item:last-child::after {
+            display: none;
+        }
+        
+        .experience-date, .education-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .skill-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .skill-list li {
+            display: inline-block;
+            background-color: var(--light-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 3px;
+            font-size: 0.85rem;
+        }
+        
+        .project-card {
+            margin-bottom: 30px;
+        }
+        
+        .project-card .card-body {
+            padding: 25px;
+        }
+        
+        .project-card .badge {
+            background-color: var(--secondary-color);
+            margin-right: 5px;
+            font-weight: 500;
+        }
+        
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            margin: 0 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .contact-form .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .hero-image {
+                margin-top: 30px;
+            }
+            
+            .project-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Sherlie Angel</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Sherlie Angel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <div class="hero">
-      <h2>AI/ML Enthusiast & Software Developer</h2>
-      <p>Certified Salesforce Developer | Passionate about Innovative AI Solutions</p>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-3">Hi, I'm Sherlie Angel Ballikuri</h1>
+                    <h3 class="mb-4">AI/ML Enthusiast | Software Developer | Salesforce Certified</h3>
+                    <p class="lead mb-4">Motivated and versatile individual passionate about AI/ML, Full Stack Development, and UI/UX Design.</p>
+                    <div class="d-flex">
+                        <a href="#contact" class="btn btn-light me-3">Get In Touch</a>
+                        <a href="#projects" class="btn btn-outline-light">View Projects</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center hero-image" data-aos="fade-left">
+                    <img src="/api/placeholder/500/500" alt="Sherlie Angel Ballikuri" class="img-fluid rounded-circle shadow" style="max-width: 80%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="section-title text-center">About Me</h2>
+                    <p class="lead mb-4">
+                        Motivated and versatile individual seeking an internship opportunity in Artificial Intelligence & Machine Learning, Full Stack Development, or UI/UX Design. Aiming to apply a strong foundation in programming, problem-solving, and design thinking to real-world projects. Committed to continuous learning, team collaboration, and contributing effectively to innovative and user-centric solutions.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h3 class="mb-4">Personal Skills</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-brain me-3 text-primary fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-0">Analytical Thinking</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-users me-3 text-primary fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-0">Team Collaboration</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-sync-alt me-3 text-primary fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-0">Adaptability</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-comments me-3 text-primary fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-0">Communication Skills</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-puzzle-piece me-3 text-primary fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-0">Problem Solving</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h3 class="mb-4">Contact Information</h3>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope me-3 text-primary"></i>
+                        <div>
+                            <p class="mb-0">sherlieangelballikuri@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-phone me-3 text-primary"></i>
+                        <div>
+                            <p class="mb-0">+91 7330822251</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-map-marker-alt me-3 text-primary"></i>
+                        <div>
+                            <p class="mb-0">Visakhapatnam, Andhra Pradesh - 530044</p>
+                        </div>
+                    </div>
+                    <div class="social-icons mt-4">
+                        <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/sherlie2005" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Skills</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-item">
+                        <div class="skill-category">Programming Languages</div>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>C</li>
+                            <li>C++</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-item">
+                        <div class="skill-category">AI/ML Frameworks</div>
+                        <ul class="skill-list">
+                            <li>TensorFlow</li>
+                            <li>Keras</li>
+                            <li>PyTorch</li>
+                            <li>Scikit-learn</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-item">
+                        <div class="skill-category">Machine Learning</div>
+                        <ul class="skill-list">
+                            <li>Supervised Learning</li>
+                            <li>Unsupervised Learning</li>
+                            <li>Neural Networks</li>
+                            <li>Deep Learning (CNN, RNN)</li>
+                            <li>Model Evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-item">
+                        <div class="skill-category">Data Science</div>
+                        <ul class="skill-list">
+                            <li>Data Preprocessing</li>
+                            <li>Pandas</li>
+                            <li>NumPy</li>
+                            <li>Matplotlib</li>
+                            <li>Seaborn</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-item">
+                        <div class="skill-category">Web Development</div>
+                        <ul class="skill-list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="skill-item">
+                        <div class="skill-category">Backend Development</div>
+                        <ul class="skill-list">
+                            <li>Node.js</li>
+                            <li>Express.js</li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="700">
+                    <div class="skill-item">
+                        <div class="skill-category">Tools & Libraries</div>
+                        <ul class="skill-list">
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>OpenCV</li>
+                            <li>Jupyter Notebook</li>
+                            <li>Google Colab</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Experience</h2>
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="experience-date">12/2024 to Current</div>
+                        <h4>Intern</h4>
+                        <h5>Brainmage.AI, Visakhapatnam, India</h5>
+                        <ul>
+                            <li>Conduct AI research on constructing regional language LLM's.</li>
+                            <li>Construct Telugu LLM utilizing Llama as foundation model.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="experience-date">05/2024 to 06/2024</div>
+                        <h4>Intern</h4>
+                        <h5>RINL Visakhapatnam Steel Plant, Visakhapatnam, India</h5>
+                        <ul>
+                            <li>Designed and Implemented comprehensive Library Management System using full-stack technologies.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h3 class="mb-4" data-aos="fade-up">Extracurricular Activities</h3>
+                    <ul class="list-unstyled" data-aos="fade-up" data-aos-delay="100">
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Editorial Lead, AI Club, GVP</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Member, Computer Society of India (CSI) - Student Branch</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Member, Hearts of Humanity (Social Service Club)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5 section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Education</h2>
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="education-date">2022 to Current</div>
+                        <h4>B.Tech, CSE (AI & ML)</h4>
+                        <h5>Gayatri Vidya Parishad College of Engineering (Autonomous), Visakhapatnam, AP</h5>
+                        <p>CGPA: 9.53</p>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="education-date">2020 to 2022</div>
+                        <h4>Intermediate Education, MPC</h4>
+                        <h5>Sri Chaitanya Junior College, Visakhapatnam, AP</h5>
+                        <p>Percentage: 97.7%</p>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="education-date">2020</div>
+                        <h4>Secondary School, SSC</h4>
+                        <h5>Sri Chaitanya EM School, Visakhapatnam, AP</h5>
+                        <p>GPA: 9.8</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h3 class="mb-4" data-aos="fade-up">Certifications</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Certified Salesforce Developer</h5>
+                                    <p class="card-text">Professional certification demonstrating expertise in Salesforce development and customization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">NPTEL Certification in Ethical Hacking</h5>
+                                    <p class="card-text">Training in cybersecurity principles and ethical hacking methodologies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Projects</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Food Supply to the Poor (Salesforce)</h4>
+                            <div class="mb-3">
+                                <span class="badge">Salesforce</span>
+                                <span class="badge">Social Impact</span>
+                                <span class="badge">Resource Management</span>
+                            </div>
+                            <p class="card-text">Developed a Salesforce-based solution to automate and optimize food supply distribution, enhancing resource allocation, donor tracking, and beneficiary management.</p>
+                            <a href="https://github.com/sherlie2005/Salesforce_FoodConnect" class="project-link" target="_blank">
+                                <i class="fab fa-github me-1"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Mindscope - AI Depression Predictor</h4>
+                            <div class="mb-3">
+                                <span class="badge">AI/ML</span>
+                                <span class="badge">Mental Health</span>
+                                <span class="badge">Machine Learning</span>
+                            </div>
+                            <p class="card-text">Built an AI-driven depression prediction model using multiple ML algorithms (Random Forest, SVM, Neural Networks) and diverse data splits to analyze behavioral patterns and improve prediction accuracy.</p>
+                            <a href="https://github.com/sherlie2005/Mindscope" class="project-link" target="_blank">
+                                <i class="fab fa-github me-1"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Get In Touch</h2>
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Sherlie Angel Ballikuri. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/sherlie2005" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
-  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-container">
-    <img src="assets/sherlie.jpg" alt="Profile Photo" class="profile-pic" />
-    <div class="about-text">
-      <p>I’m an aspiring AI and software development professional currently interning at Brainmage.AI. I’ve built a Library Management System at RINL and am skilled in full-stack development and machine learning.</p>
-      <div class="info-grid">
-        <div><strong>Email:</strong> sherlieangelballikuri@gmail.com</div>
-        <div><strong>Phone:</strong> +91 7330822251</div>
-        <div><strong>Location:</strong> Visakhapatnam, Andhra Pradesh</div>
-        <div><strong>Education:</strong> B.Tech CSE (AI & ML), GVP College of Engineering – 9.53 CGPA</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Brainmage.AI (12/2024 – Present)</h3>
-      <p>• AI research for constructing regional LLMs<br>• Built Telugu LLM using LLaMA</p>
-    </div>
-    <div class="card">
-      <h3>RINL Visakhapatnam Steel Plant (05/2024 – 06/2024)</h3>
-      <p>• Designed a full-stack Library Management System</p>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <h3>MindScope - AI Depression Predictor</h3>
-      <p>ML-driven predictor using Random Forest, SVM, and Neural Networks to identify depression levels.</p>
-    </div>
-    <div class="card">
-      <h3>Food Supply to the Poor (Salesforce)</h3>
-      <p>Optimized food distribution system using Salesforce CRM tools for donor and beneficiary management.</p>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul class="skill-list">
-      <li>Python, C, C++</li>
-      <li>TensorFlow, Keras, PyTorch</li>
-      <li>Supervised & Unsupervised Learning, Deep Learning</li>
-      <li>HTML, CSS, Responsive Web Design</li>
-      <li>Git, GitHub, OpenCV</li>
-    </ul>
-    <h3>Personal Skills</h3>
-    <ul class="skill-list">
-      <li>Analytical Thinking</li>
-      <li>Team Collaboration</li>
-      <li>Adaptability</li>
-      <li>Communication</li>
-      <li>Problem Solving</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Let’s connect! Feel free to reach out via any of the channels below.</p>
-    <ul class="contact-list">
-      <li><strong>Email:</strong> sherlieangelballikuri@gmail.com</li>
-      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank">linkedin.com/in/sherlie-angel</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/sherlie2005" target="_blank">github.com/sherlie2005</a></li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>© 2025 Sherlie Angel Ballikuri. All rights reserved.</p>
-  </footer>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS Animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navbarHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse.classList.contains('show')) {
+                        document.querySelector('.navbar-toggler').click();
+                    }
+                }
+            });
+        });
+        
+        // Form submission (prevent default for demo)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully! (This is a demo - no actual message was sent)');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
