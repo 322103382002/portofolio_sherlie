@@ -1,888 +1,620 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sherlie Angel Ballikuri - Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- AOS Animation Library -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4e5ee4;
-            --secondary-color: #7685f2;
-            --dark-color: #202020;
-            --light-color: #f8f9fa;
-            --accent-color: #2ecc71;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark-color);
-            background-color: var(--light-color);
-            scroll-behavior: smooth;
-        }
-        
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .nav-link {
-            color: var(--dark-color);
-            font-weight: 600;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-            padding-top: 60px;
-        }
-        
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-repeat: no-repeat;
-            background-position: bottom;
-            background-size: cover;
-            opacity: 0.4;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            height: 4px;
-            width: 60px;
-            background: var(--primary-color);
-        }
-        
-        .section-title.text-center::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-title {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        
-        .experience-item, .education-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .experience-item::before, .education-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            z-index: 1;
-        }
-        
-        .experience-item::after, .education-item::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% + 10px);
-            background: var(--primary-color);
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .experience-item:last-child::after, .education-item:last-child::after {
-            display: none;
-        }
-        
-        .experience-date, .education-date {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .skill-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-category {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        
-        .skill-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        
-        .skill-list li {
-            display: inline-block;
-            background-color: var(--light-color);
-            padding: 5px 10px;
-            border-radius: 20px;
-            margin: 3px;
-            font-size: 0.85rem;
-        }
-        
-        .project-card {
-            margin-bottom: 30px;
-        }
-        
-        .project-card .card-body {
-            padding: 25px;
-        }
-        
-        .project-card .badge {
-            background-color: var(--secondary-color);
-            margin-right: 5px;
-            font-weight: 500;
-        }
-        
-        .project-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin-right: 15px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            color: var(--secondary-color);
-        }
-        
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: white;
-            color: var(--primary-color);
-            margin: 0 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            transform: translateY(-3px);
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 30px 0;
-        }
-        
-        .contact-form .form-control {
-            border-radius: 8px;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 2px solid #eee;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-form .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: none;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .hero-section {
-                padding: 80px 0;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .section-padding {
-                padding: 60px 0;
-            }
-            
-            .hero-section {
-                padding: 60px 0;
-            }
-            
-            .hero-image {
-                margin-top: 30px;
-            }
-            
-            .project-card {
-                margin-bottom: 20px;
-            }
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sherlie Angel Ballikuri — Portfolio</title>
+  <meta name="description" content="Sherlie Angel Ballikuri — AI/ML Enthusiast, Software Developer, Salesforce Certified. Portfolio showcasing projects, experience, skills and contact information." />
+  <meta name="theme-color" content="#4e5ee4" />
 
-        @media (max-width: 768px) {
-    .hero-content {
-        text-align: center;
+  <!-- Open Graph (for link previews) -->
+  <meta property="og:title" content="Sherlie Angel — Portfolio" />
+  <meta property="og:description" content="AI/ML Enthusiast | Software Developer | Salesforce Certified" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="assets/favicon.png" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary: #4e5ee4;
+      --secondary: #7685f2;
+      --dark: #202020;
+      --muted: #6c757d;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --accent: #2ecc71;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 12px;
+      color-scheme: light;
     }
 
-    .hero-section .btn {
-        margin: 5px auto;
-    }
+    [data-theme="dark"]{
+      --primary: #9aa8ff;
+      --secondary: #6f7cf8;
+      --dark: #e8eefc;
+      --muted: #c4cbe8;
+      --bg: #0b0d12;
+      --card: #0f141a;
+      --glass: rgba(20,22,28,0.6);
+      --accent: #58d68d;
+      color-scheme: dark;
     }
 
-    </style>
+    html,body{
+      height:100%;
+      background:var(--bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color:var(--dark);
+      scroll-behavior:smooth;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus{
+      left: 10px;
+      top: 10px;
+      width: auto;
+      height: auto;
+      padding: 8px 12px;
+      background:var(--primary);
+      color:white;
+      border-radius:6px;
+      z-index:9999;
+    }
+
+    /* Navbar */
+    .navbar{
+      background: linear-gradient(90deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
+      transition:all .25s ease;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    [data-theme="dark"] .navbar{
+      background: linear-gradient(90deg, rgba(15,20,26,0.8), rgba(15,20,26,0.7));
+      border-bottom-color: rgba(255,255,255,0.03);
+    }
+
+    .navbar-brand{ font-weight:700; color:var(--primary); }
+    .nav-link{ color:var(--dark); font-weight:600; }
+    [data-theme="dark"] .nav-link{ color:var(--muted); }
+
+    .hero-section{
+      padding: 100px 0 60px;
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      color:white;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-wave{
+      position:absolute; left:0; right:0; bottom:0; height:120px; opacity:0.35; pointer-events:none;
+    }
+
+    .hero-content h1{ font-size:2.4rem; font-weight:800; }
+    .hero-content h3{ font-weight:600; opacity:0.95; }
+
+    /* Profile image: square with preserved aspect ratio */
+    .profile-img{
+      width:220px; height:220px; object-fit:cover; border-radius:16px; border:4px solid rgba(255,255,255,0.12); box-shadow:0 10px 30px rgba(0,0,0,0.15);
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+    }
+
+    /* Section titles */
+    .section-title{ font-weight:700; position:relative; margin-bottom:1.25rem; }
+    .section-title::after{ content:''; display:block; height:4px; width:72px; background:var(--primary); margin-top:10px; border-radius:4px; }
+
+    /* Cards */
+    .card{ border:none; border-radius:var(--radius); background:var(--card); box-shadow:0 6px 20px rgba(11,13,18,0.05); }
+    [data-theme="dark"] .card{ box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+
+    /* Timeline */
+    .timeline-item{ position:relative; padding-left:36px; margin-bottom:28px; }
+    .timeline-item::before{ content:''; position:absolute; left:0; top:8px; width:12px; height:12px; border-radius:50%; background:var(--primary); }
+    .timeline-item::after{ content:''; position:absolute; left:5px; top:26px; width:2px; height:calc(100% - 12px); background:var(--primary); opacity:0.2; }
+    .timeline-item:last-child::after{ display:none; }
+
+    /* Skills badges */
+    .skill-badge{ display:inline-block; padding:6px 10px; border-radius:18px; background:var(--glass); margin:4px; font-size:.85rem; }
+
+    /* Footer */
+    footer{ background:var(--card); padding:28px 0; border-top:1px solid rgba(0,0,0,0.04); }
+
+    /* Back to top */
+    .back-to-top{ position:fixed; right:20px; bottom:20px; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--primary); color:white; box-shadow:0 8px 20px rgba(0,0,0,0.12); cursor:pointer; opacity:0; transition:all .25s ease; z-index:999; }
+    .back-to-top.show{ opacity:1; transform:translateY(0); }
+
+    /* Dark mode toggle */
+    .theme-toggle{ background:transparent; border:1px solid rgba(0,0,0,0.06); padding:6px 10px; border-radius:8px; }
+    [data-theme="dark"] .theme-toggle{ border-color: rgba(255,255,255,0.06); }
+
+    /* Responsive tweaks */
+    @media (max-width: 992px){ .hero-content h1{ font-size:2rem; } .profile-img{ width:180px; height:180px; } }
+    @media (max-width: 576px){ .hero-section{ padding:70px 0 40px; } .hero-content h1{ font-size:1.6rem; } }
+
+    /* Small clean helpers */
+    .badge-soft{ background: linear-gradient(90deg, rgba(78,94,228,0.12), rgba(118,133,242,0.08)); color:var(--primary); font-weight:600; }
+
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#home">Sherlie Angel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Sherlie Angel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-3">
+            <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle color theme">
+              <i class="fa-regular fa-moon" id="themeIcon"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section py-5">
-  <div class="container">
-    <div class="row align-items-center">
-      <!-- Text Content -->
-      <div class="col-lg-6 hero-content mb-4 mb-lg-0" data-aos="fade-right">
-        <h1 class="display-4 fw-bold mb-3">Hi, I'm Sherlie Angel Ballikuri</h1>
-        <h3 class="mb-4">AI/ML Enthusiast | Software Developer | Salesforce Certified</h3>
-        <p class="lead mb-4">Motivated and versatile individual passionate about AI/ML, Full Stack Development, and UI/UX Design.</p>
-        <div class="d-flex">
-          <a href="#contact" class="btn btn-light me-3">Get In Touch</a>
-          <a href="#projects" class="btn btn-outline-light">View Projects</a>
+  <!-- HERO -->
+  <main id="main">
+  <header id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 hero-content text-white" data-aos="fade-right">
+          <h1>Hi, I'm Sherlie Angel Ballikuri</h1>
+          <h3 class="mb-3">AI/ML Enthusiast | Software Developer | Salesforce Certified</h3>
+          <p class="lead">Motivated and versatile—I'm passionate about building ML systems, full-stack apps, and meaningful tech for social good.</p>
+
+          <div class="mt-4 d-flex gap-2 flex-wrap">
+            <a class="btn btn-light btn-lg" href="#contact">Get In Touch</a>
+            <a class="btn btn-outline-light btn-lg" href="#projects">View Projects</a>
+            <a class="btn btn-link text-white align-self-center" href="/Sherlie_Angel_Resume.pdf" target="_blank" aria-label="Download resume">Resume <i class="fa-solid fa-file-arrow-down ms-1"></i></a>
+          </div>
+
+          <div class="mt-4 d-flex gap-3">
+            <a class="social-link" href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a class="social-link" href="https://github.com/sherlie2005" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center" data-aos="fade-left">
+          <!-- Use webp for performance; make sure to provide a replacement file in assets/ -->
+          <picture>
+            <source srcset="assets/sherlie.webp" type="image/webp">
+            <img src="assets/sherlie.jpg" alt="Profile picture of Sherlie Angel Ballikuri" class="profile-img" width="220" height="220">
+          </picture>
+        </div>
+      </div>
+    </div>
+
+    <!-- decorative wave SVG -->
+    <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="rgba(255,255,255,0.08)" d="M0,160L48,149.3C96,139,192,117,288,128C384,139,480,181,576,186.7C672,192,768,160,864,149.3C960,139,1056,149,1152,165.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <h2 class="section-title">About Me</h2>
+          <p class="lead">Driven by a deep passion for AI and Machine Learning, I build practical systems that solve real problems. I love working full‑stack and connecting research ideas to production-ready code.</p>
         </div>
       </div>
 
-      <!-- Circular Image -->
-      <div class="col-lg-6 text-center" data-aos="fade-left">
-        <img src="assets/sherlie.jpg" alt="Sherlie Angel Ballikuri"
-          class="rounded-circle shadow"
-          style="width: 180px; height: 180px; object-fit: cover; border: 4px solid #fff;">
+      <div class="row mt-5 align-items-start">
+        <div class="col-md-6" data-aos="fade-right">
+          <h3>Personal Skills</h3>
+          <div class="row mt-3">
+            <div class="col-6 mb-3"><i class="fas fa-brain me-2 text-primary"></i>Analytical Thinking</div>
+            <div class="col-6 mb-3"><i class="fas fa-users me-2 text-primary"></i>Team Collaboration</div>
+            <div class="col-6 mb-3"><i class="fas fa-sync-alt me-2 text-primary"></i>Adaptability</div>
+            <div class="col-6 mb-3"><i class="fas fa-comments me-2 text-primary"></i>Communication</div>
+            <div class="col-6 mb-3"><i class="fas fa-puzzle-piece me-2 text-primary"></i>Problem Solving</div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-left">
+          <h3>Contact</h3>
+          <p class="mb-1"><i class="fas fa-envelope me-2 text-primary"></i><a href="mailto:sherlieangelballikuri@gmail.com">sherlieangelballikuri@gmail.com</a></p>
+          <p class="mb-1"><i class="fas fa-phone me-2 text-primary"></i><a href="tel:+917330822251">+91 7330822251</a></p>
+          <p class="mb-1"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Visakhapatnam, Andhra Pradesh - 530044</p>
+
+          <div class="mt-3">
+            <a class="btn btn-outline-primary me-2" href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank" aria-label="LinkedIn profile">LinkedIn</a>
+            <a class="btn btn-outline-dark" href="https://github.com/sherlie2005" target="_blank" aria-label="GitHub profile">GitHub</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- SKILLS -->
+  <section id="skills" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Skills</h2>
 
-    <!-- About Section -->
-    <section id="about" class="py-5 section-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <h2 class="section-title text-center">About Me</h2>
-                    <p class="lead mb-4">
-                        Driven by a deep passion for AI and Machine Learning, I aim to apply my skills to real-world challenges, enhancing innovation and problem-solving. My commitment to continuous learning empowers me to contribute meaningfully to cutting-edge technological advancements.
-                    </p>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-6" data-aos="fade-right">
-                    <h3 class="mb-4">Personal Skills</h3>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-brain me-3 text-primary fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-0">Analytical Thinking</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-users me-3 text-primary fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-0">Team Collaboration</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-sync-alt me-3 text-primary fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-0">Adaptability</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-comments me-3 text-primary fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-0">Communication Skills</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-puzzle-piece me-3 text-primary fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-0">Problem Solving</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <h3 class="mb-4">Contact Information</h3>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-envelope me-3 text-primary"></i>
-                        <div>
-                            <p class="mb-0">sherlieangelballikuri@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-phone me-3 text-primary"></i>
-                        <div>
-                            <p class="mb-0">+91 7330822251</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-map-marker-alt me-3 text-primary"></i>
-                        <div>
-                            <p class="mb-0">Visakhapatnam, Andhra Pradesh - 530044</p>
-                        </div>
-                    </div>
-                    <div class="social-icons mt-4">
-                        <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/sherlie2005" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
+      <div class="row mt-4">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Programming Languages</h5>
+            <div class="mb-2"><span class="skill-badge">Python</span><span class="skill-badge">C</span><span class="skill-badge">C++</span><span class="skill-badge">HTML</span><span class="skill-badge">CSS</span></div>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-5 section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title text-center" data-aos="fade-up">Skills</h2>
-            <div class="row mt-5">
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-item">
-                        <div class="skill-category">Programming Languages</div>
-                        <ul class="skill-list">
-                            <li>Python</li>
-                            <li>C</li>
-                            <li>C++</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-item">
-                        <div class="skill-category">AI/ML Frameworks</div>
-                        <ul class="skill-list">
-                            <li>TensorFlow</li>
-                            <li>Keras</li>
-                            <li>PyTorch</li>
-                            <li>Scikit-learn</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-item">
-                        <div class="skill-category">Machine Learning</div>
-                        <ul class="skill-list">
-                            <li>Supervised Learning</li>
-                            <li>Unsupervised Learning</li>
-                            <li>Neural Networks</li>
-                            <li>Deep Learning (CNN, RNN)</li>
-                            <li>Model Evaluation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-item">
-                        <div class="skill-category">Data Science</div>
-                        <ul class="skill-list">
-                            <li>Data Preprocessing</li>
-                            <li>Pandas</li>
-                            <li>NumPy</li>
-                            <li>Matplotlib</li>
-                            <li>Seaborn</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="skill-item">
-                        <div class="skill-category">Web Development</div>
-                        <ul class="skill-list">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Responsive Design</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="skill-item">
-                        <div class="skill-category">Backend Development</div>
-                        <ul class="skill-list">
-                            <li>Node.js</li>
-                            <li>Express.js</li>
-                            <li>MongoDB</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="700">
-                    <div class="skill-item">
-                        <div class="skill-category">Tools & Libraries</div>
-                        <ul class="skill-list">
-                            <li>Git</li>
-                            <li>GitHub</li>
-                            <li>OpenCV</li>
-                            <li>Jupyter Notebook</li>
-                            <li>Google Colab</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">AI / ML Frameworks</h5>
+            <div class="mb-2"><span class="skill-badge">TensorFlow</span><span class="skill-badge">Keras</span><span class="skill-badge">PyTorch</span><span class="skill-badge">Scikit-learn</span></div>
+          </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-5 section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Experience</h2>
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="experience-date">12/2024 to Current</div>
-                        <h4>Intern</h4>
-                        <h5>Brainmage.AI, Visakhapatnam, India</h5>
-                        <ul>
-                            <li>Conduct AI research on constructing regional language LLM's.</li>
-                            <li>Construct Telugu LLM utilizing Llama as foundation model.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="experience-date">05/2024 to 06/2024</div>
-                        <h4>Intern</h4>
-                        <h5>RINL Visakhapatnam Steel Plant, Visakhapatnam, India</h5>
-                        <ul>
-                            <li>Designed and Implemented comprehensive Library Management System using full-stack technologies.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <h3 class="mb-4" data-aos="fade-up">Extracurricular Activities</h3>
-                    <ul class="list-unstyled" data-aos="fade-up" data-aos-delay="100">
-                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Editorial Lead, AI Club, GVP</li>
-                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Member, Computer Society of India (CSI) - Student Branch</li>
-                        <li><i class="fas fa-check-circle text-primary me-2"></i> Member, Hearts of Humanity (Social Service Club)</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Machine Learning</h5>
+            <ul class="mb-0">
+              <li>Supervised & Unsupervised Learning</li>
+              <li>Neural Networks (CNN / RNN)</li>
+              <li>Model Evaluation & Deployment</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-5 section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Education</h2>
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="education-date">2022 to Current</div>
-                        <h4>B.Tech, CSE (AI & ML)</h4>
-                        <h5>Gayatri Vidya Parishad College of Engineering (Autonomous), Visakhapatnam, AP</h5>
-                        <p>CGPA: 9.53</p>
-                    </div>
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="education-date">2020 to 2022</div>
-                        <h4>Intermediate Education, MPC</h4>
-                        <h5>Sri Chaitanya Junior College, Visakhapatnam, AP</h5>
-                        <p>Percentage: 97.7%</p>
-                    </div>
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="300">
-                        <div class="education-date">2020</div>
-                        <h4>Secondary School, SSC</h4>
-                        <h5>Sri Chaitanya EM School, Visakhapatnam, AP</h5>
-                        <p>GPA: 9.8</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <h3 class="mb-4" data-aos="fade-up">Certifications</h3>
-                    <div class="row">
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">Certified Salesforce Developer</h5>
-                                        <a href="https://drive.google.com/file/d/1tU_eJRZXKGp1jW6VuUd812aGJ3E0T9rz/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">Professional certification demonstrating expertise in Salesforce development and customization.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">NPTEL Certification in Ethical Hacking</h5>
-                                        <a href="https://drive.google.com/your-nptel-certificate-link" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">Training in cybersecurity principles and ethical hacking methodologies.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">Java Programming</h5>
-                                        <a href="https://drive.google.com/file/d/1YPJtaladYjtA4EBLij8q1w68YF0CKeMX/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">EdEx certification in Java programming fundamentals and advanced concepts.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">Pandas for Data Analysis</h5>
-                                        <a href="https://drive.google.com/file/d/11ZmZxdbSOPk0bXsB-Fp7K18ekehcSMP6/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">Udemy certification on data manipulation and analysis using Python's Pandas library.</p>
-                                </div>
-                            </div>
-                        </div>
-<!--                         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">Web Development Fundamentals</h5>
-                                        <a href="https://drive.google.com/your-web-dev-certificate-link" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">Comprehensive training in HTML, CSS, and responsive web design principles.</p>
-                                </div>
-                            </div>
-                        </div> -->
-<!--                         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="card-title">Machine Learning Essentials</h5>
-                                        <a href="https://drive.google.com/your-ml-certificate-link" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                    <p class="card-text">Training in core machine learning algorithms and implementation techniques.</p>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Data Science</h5>
+            <div><span class="skill-badge">Pandas</span><span class="skill-badge">NumPy</span><span class="skill-badge">Matplotlib</span></div>
+          </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-5 section-padding">
-        <div class="container">
-            <h2 class="section-title text-center" data-aos="fade-up">Projects</h2>
-            <div class="row mt-5">
-                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card project-card h-100">
-                        <div class="card-body">
-                            <h4 class="card-title">Food Supply to the Poor (Salesforce)</h4>
-                            <div class="mb-3">
-                                <span class="badge">Salesforce</span>
-                                <span class="badge">Social Impact</span>
-                                <span class="badge">Resource Management</span>
-                            </div>
-                            <p class="card-text">Developed a Salesforce-based solution to automate and optimize food supply distribution, enhancing resource allocation, donor tracking, and beneficiary management.</p>
-                            <a href="https://github.com/sherlie2005/Salesforce_FoodConnect" class="project-link" target="_blank">
-                                <i class="fab fa-github me-1"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card project-card h-100">
-                        <div class="card-body">
-                            <h4 class="card-title">Mindscope - AI Depression Predictor</h4>
-                            <div class="mb-3">
-                                <span class="badge">AI/ML</span>
-                                <span class="badge">Mental Health</span>
-                                <span class="badge">Machine Learning</span>
-                            </div>
-                            <p class="card-text">Built an AI-driven depression prediction model using multiple ML algorithms (Random Forest, SVM, Neural Networks) and diverse data splits to analyze behavioral patterns and improve prediction accuracy.</p>
-                            <a href="https://github.com/sherlie2005/Mindscope" class="project-link" target="_blank">
-                                <i class="fab fa-github me-1"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Web & Backend</h5>
+            <div><span class="skill-badge">HTML</span><span class="skill-badge">CSS</span><span class="skill-badge">Node.js</span><span class="skill-badge">Express</span></div>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title text-center" data-aos="fade-up">Get In Touch</h2>
-            <div class="row mt-5 justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <div class="card">
-                        <div class="card-body">
-                            <form class="contact-form">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
-                                </div>
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary">Send Message</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Tools</h5>
+            <div><span class="skill-badge">Git</span><span class="skill-badge">GitHub</span><span class="skill-badge">OpenCV</span><span class="skill-badge">Colab</span></div>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Sherlie Angel Ballikuri. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="social-icons">
-                        <a href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/sherlie2005" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+      </div>
     </div>
+  </section>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script>
-        // Initialize AOS Animation
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow');
-            } else {
-                navbar.classList.remove('shadow');
-            }
-        });
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('active');
-            } else {
-                backToTopButton.classList.remove('active');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const navbarHeight = document.getElementById('navbar').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const navbarCollapse = document.getElementById('navbarNav');
-                    if (navbarCollapse.classList.contains('show')) {
-                        document.querySelector('.navbar-toggler').click();
-                    }
-                }
-            });
-        });
-        
-        // Form submission (prevent default for demo)
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message sent successfully! (This is a demo - no actual message was sent)');
-            this.reset();
-        });
-    </script>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-5">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Experience</h2>
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5 class="mb-1">Intern — Brainmage.AI</h5>
+                <small class="text-muted">Visakhapatnam, India</small>
+              </div>
+              <div class="text-muted">Dec 2024 — Present</div>
+            </div>
+            <p class="mt-2">Conduct AI research on constructing regional language LLMs. Constructed a Telugu LLM using LLaMA-based models and dataset curation.</p>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5 class="mb-1">Intern — RINL Visakhapatnam Steel Plant</h5>
+                <small class="text-muted">Visakhapatnam, India</small>
+              </div>
+              <div class="text-muted">May 2024 — Jun 2024</div>
+            </div>
+            <p class="mt-2">Designed and implemented a Library Management System using full-stack technologies (front-end, backend, and database).</p>
+          </div>
+
+          <h4 class="mt-4">Extracurricular</h4>
+          <ul class="list-unstyled mt-2">
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Editorial Lead, AI Club, GVP</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Member, Computer Society of India (CSI)</li>
+            <li><i class="fas fa-check-circle text-primary me-2"></i>Member, Hearts of Humanity (Social Service)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <section id="education" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Education & Certifications</h2>
+
+      <div class="row mt-4">
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-3 h-100">
+            <h5>B.Tech — CSE (AI & ML)</h5>
+            <small class="text-muted">Gayatri Vidya Parishad College of Engineering (Autonomous)</small>
+            <p class="mb-0 mt-2">2022 — Present | CGPA: 9.53</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-3 h-100">
+            <h5>Intermediate, MPC</h5>
+            <small class="text-muted">Sri Chaitanya Junior College</small>
+            <p class="mb-0 mt-2">2020 — 2022 | Percentage: 97.7%</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h6 class="mb-1">Certified Salesforce Developer</h6>
+                <small class="text-muted">Professional Certification</small>
+              </div>
+              <a href="https://drive.google.com/file/d/1tU_eJRZXKGp1jW6VuUd812aGJ3E0T9rz/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary" aria-label="Salesforce certificate link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="card p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h6 class="mb-1">NPTEL — Ethical Hacking</h6>
+                <small class="text-muted">Online Certification</small>
+              </div>
+              <a href="#" class="btn btn-sm btn-outline-primary" aria-label="NPTEL certificate link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="card p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h6 class="mb-1">Pandas for Data Analysis</h6>
+                <small class="text-muted">Udemy</small>
+              </div>
+              <a href="https://drive.google.com/file/d/11ZmZxdbSOPk0bXsB-Fp7K18ekehcSMP6/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary" aria-label="Pandas certificate link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Projects</h2>
+
+      <div class="row mt-4">
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-3 h-100 project-card">
+            <h5>Food Supply to the Poor (Salesforce)</h5>
+            <div class="mb-2">
+              <span class="badge badge-soft me-1">Salesforce</span>
+              <span class="badge badge-soft me-1">Social Impact</span>
+            </div>
+            <p class="mb-1">Built a Salesforce solution to automate food distribution, donor tracking and beneficiary management.</p>
+            <a href="https://github.com/sherlie2005/Salesforce_FoodConnect" target="_blank" class="d-inline-block mt-2">View on GitHub <i class="fab fa-github ms-1"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-3 h-100 project-card">
+            <h5>Mindscope — AI Depression Predictor</h5>
+            <div class="mb-2">
+              <span class="badge badge-soft me-1">AI/ML</span>
+              <span class="badge badge-soft me-1">Health</span>
+            </div>
+            <p class="mb-1">Built models (Random Forest, SVM, Neural Nets) to analyse behavioural signals and predict depression risk.</p>
+            <a href="https://github.com/sherlie2005/Mindscope" target="_blank" class="d-inline-block mt-2">View on GitHub <i class="fab fa-github ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Get In Touch</h2>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-4">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label visually-hidden" for="name">Your Name</label>
+                  <input id="name" class="form-control" type="text" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label visually-hidden" for="email">Your Email</label>
+                  <input id="email" class="form-control" type="email" placeholder="Your Email" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input id="subject" class="form-control" type="text" placeholder="Subject" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label visually-hidden" for="message">Your Message</label>
+                <textarea id="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              </div>
+            </form>
+            <div id="formAlert" class="mt-3" role="status" aria-live="polite"></div>
+
+            <small class="d-block mt-3 text-muted">Note: This demo currently prevents actual sending. To enable email sending, wire up EmailJS or your preferred backend (see comments in the JS).</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 Sherlie Angel Ballikuri. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-inline-block">
+            <a class="me-2" href="https://linkedin.com/in/sherlie-angel-321591255" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/sherlie2005" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="backToTop" class="back-to-top" aria-hidden="true" title="Back to top"><i class="fas fa-arrow-up"></i></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 700, easing: 'ease-in-out', once: true });
+
+    // Smooth scrolling with offset for fixed navbar
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(!href.startsWith('#') || href === '#') return;
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(!el) return;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - document.getElementById('navbar').offsetHeight - 8;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+
+        // Collapse navbar on mobile
+        const nav = document.getElementById('navbarNav');
+        if(nav && nav.classList.contains('show')){
+          document.querySelector('.navbar-toggler').click();
+        }
+      });
+    });
+
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 30) navbar.classList.add('shadow'); else navbar.classList.remove('shadow');
+    });
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 400) backToTop.classList.add('show'); else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Theme (dark/light) toggle with persistence
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+
+    function applyTheme(theme){
+      if(theme === 'dark') root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
+      themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
+      themeToggle.setAttribute('aria-pressed', theme === 'dark');
+    }
+
+    // initial
+    const saved = localStorage.getItem('site-theme');
+    if(saved){ applyTheme(saved); }
+    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ applyTheme('dark'); }
+    else{ applyTheme('light'); }
+
+    themeToggle.addEventListener('click', ()=>{
+      const now = root.hasAttribute('data-theme') ? 'light' : 'dark';
+      const next = now === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('site-theme', next);
+    });
+
+    // Contact form handling (demo). Replace with EmailJS or your backend to send real emails.
+    const contactForm = document.getElementById('contactForm');
+    const formAlert = document.getElementById('formAlert');
+
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+
+      // Basic validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(!name || !email || !subject || !message){
+        formAlert.innerHTML = '<div class="alert alert-warning">Please fill all fields.</div>';
+        return;
+      }
+
+      // Demo success message
+      formAlert.innerHTML = '<div class="alert alert-success">Message sent successfully! (demo — no email sent). Thank you, ' + name + '.</div>';
+      contactForm.reset();
+
+      /*
+        To enable real email sending:
+        1) Use EmailJS (https://www.emailjs.com/) and include their SDK script.
+        2) Or POST the form data to your backend endpoint which sends the email.
+
+        Example (EmailJS):
+        emailjs.send('<service_id>','<template_id>',{ from_name:name, from_email:email, subject, message })
+          .then(()=>{ show success }, (err)=>{ show error });
+
+        Make sure to remove the demo alert behavior above when wiring real email sending.
+      */
+    });
+
+    // Small accessibility improvement: focus outline for keyboard users
+    document.body.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+    });
+
+  </script>
 </body>
 </html>
