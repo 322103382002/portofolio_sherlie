@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sherlie Angel Ballikuri — Portfolio</title>
+    <meta
+      name="description"
+      content="Sherlie Angel Ballikuri — AI/ML Enthusiast, Software Developer, Salesforce Certified. Portfolio showcasing projects, experience, skills and contact information."
+    />
+    <meta name="theme-color" content="#4e5ee4" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sherlie Angel — Portfolio" />
+    <meta property="og:description" content="AI/ML Enthusiast | Software Developer | Salesforce Certified" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.png" />
+
+    <!-- Stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #4e5ee4;
+        --secondary: #7685f2;
+        --dark: #202020;
+        --muted: #6c757d;
+        --bg: #f8f9fa;
+        --card: #ffffff;
+        --accent: #2ecc71;
+        --glass: rgba(255, 255, 255, 0.6);
+        --radius: 12px;
+        color-scheme: light;
+      }
+
+      [data-theme="dark"] {
+        --primary: #9aa8ff;
+        --secondary: #6f7cf8;
+        --dark: #e8eefc;
+        --muted: #c4cbe8;
+        --bg: #0b0d12;
+        --card: #0f141a;
+        --glass: rgba(20, 22, 28, 0.6);
+        --accent: #58d68d;
+        color-scheme: dark;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background: var(--bg);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--dark);
+        scroll-behavior: smooth;
+      }
+
+      /* Accessibility skip link */
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      .skip-link:focus {
+        left: 10px;
+        top: 10px;
+        width: auto;
+        height: auto;
+        padding: 8px 12px;
+        background: var(--primary);
+        color: white;
+        border-radius: 6px;
+        z-index: 9999;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.6));
+        transition: all 0.25s ease;
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      [data-theme="dark"] .navbar {
+        background: linear-gradient(90deg, rgba(15, 20, 26, 0.8), rgba(15, 20, 26, 0.7));
+        border-bottom-color: rgba(255, 255, 255, 0.03);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .nav-link {
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      [data-theme="dark"] .nav-link {
+        color: var(--muted);
+      }
+
+      /* Hero section */
+      .hero-section {
+        padding: 100px 0 60px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content h1 {
+        font-size: 2.4rem;
+        font-weight: 800;
+      }
+
+      .hero-content h3 {
+        font-weight: 600;
+        opacity: 0.95;
+      }
+
+      .profile-img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 16px;
+        border: 4px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      }
+
+      /* General sections and cards */
+      .section-title {
+        font-weight: 700;
+        position: relative;
+        margin-bottom: 1.25rem;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 72px;
+        background: var(--primary);
+        margin-top: 10px;
+        border-radius: 4px;
+      }
+
+      .card {
+        border: none;
+        border-radius: var(--radius);
+        background: var(--card);
+        box-shadow: 0 6px 20px rgba(11, 13, 18, 0.05);
+      }
+
+      [data-theme="dark"] .card {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      }
+
+      .skill-badge {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 18px;
+        background: var(--glass);
+        margin: 4px;
+        font-size: 0.85rem;
+      }
+
+      footer {
+        background: var(--card);
+        padding: 28px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.25s ease;
+        z-index: 999;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 992px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        .profile-img {
+          width: 180px;
+          height: 180px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 70px 0 40px;
+        }
+        .hero-content h1 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand" href="#home">Sherlie Angel</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-3">
+              <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle color theme">
+                <i class="fa-regular fa-moon" id="themeIcon"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content sections here (Hero, About, Skills, Experience, Education, Projects, Contact, Footer) -->
+  </body>
+</html>
