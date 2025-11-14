@@ -1,35 +1,98 @@
+import { Card, CardContent, Typography, Grid, Box } from '@mui/material';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
+const education = [
+  {
+    title: "B.Tech — CSE (AI & ML)",
+    school: "Gayatri Vidya Parishad College of Engineering (Autonomous)",
+    period: "2022 — Present",
+    details: "CGPA: 9.53"
+  },
+  {
+    title: "Intermediate, MPC",
+    school: "Sri Chaitanya Junior College",
+    period: "2020 — 2022",
+    details: "Percentage: 97.7%"
+  }
+];
+
 function Education() {
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: false
+  });
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.2, 0.65, 0.3, 0.9]
+      }
+    }
+  };
+
   return (
-    <section id="education" className="container">
-      <h2 className="section-title">Education & Certifications</h2>
-      <div style={{display:"flex",flexWrap:"wrap",gap:"1.5rem"}}>
-        <div className="card" style={{flex:"1 1 250px"}}>
-          <h5>B.Tech — CSE (AI & ML)</h5>
-          <small>Gayatri Vidya Parishad College of Engineering (Autonomous)</small>
-          <p>2022 — Present | CGPA: 9.53</p>
-        </div>
-        <div className="card" style={{flex:"1 1 250px"}}>
-          <h5>Intermediate, MPC</h5>
-          <small>Sri Chaitanya Junior College</small>
-          <p>2020 — 2022 | Percentage: 97.7%</p>
-        </div>
-        <div className="card" style={{flex:"1 1 250px"}}>
-          <h6>Certified Salesforce Developer</h6>
-          <small>Professional Certification</small>
-          <a href="https://drive.google.com/file/d/1tU_eJRZXKGp1jW6VuUd812aGJ3E0T9rz/view?usp=sharing" target="_blank" rel="noopener">Salesforce Certificate</a>
-        </div>
-        <div className="card" style={{flex:"1 1 250px"}}>
-          <h6>NPTEL — Ethical Hacking</h6>
-          <small>Online Certification</small>
-          <a href="#" target="_blank" rel="noopener">NPTEL Certificate</a>
-        </div>
-        <div className="card" style={{flex:"1 1 250px"}}>
-          <h6>Pandas for Data Analysis</h6>
-          <small>Udemy</small>
-          <a href="https://drive.google.com/file/d/11ZmZxdbSOPk0bXsB-Fp7K18ekehcSMP6/view?usp=sharing" target="_blank" rel="noopener">Pandas Certificate</a>
-        </div>
-      </div>
-    </section>
+    <Box sx={{ 
+      width: '100%',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      textAlign: 'center',
+      px: 3
+    }}>
+      <Typography variant="h4" fontWeight={700} gutterBottom>Education</Typography>
+      <Grid container spacing={3} justifyContent="center">
+        <Grid item xs={12} md={6}>
+          <motion.div
+            ref={ref}
+            className="floating-card"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={cardVariants}
+            style={{ height: '100%' }}
+          >
+            <Card elevation={6} sx={{ 
+              height: '100%', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              justifyContent: 'center',
+              minHeight: '200px'
+            }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>{education[0].title}</Typography>
+                <Typography color="text.secondary" gutterBottom>{education[0].school}</Typography>
+                <Typography>{education[0].period} | {education[0].details}</Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={cardVariants}
+            style={{ height: '100%' }}
+          >
+            <Card elevation={4} sx={{ 
+              height: '100%', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              justifyContent: 'center',
+              minHeight: '200px'
+            }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>{education[1].title}</Typography>
+                <Typography color="text.secondary" gutterBottom>{education[1].school}</Typography>
+                <Typography>{education[1].period} | {education[1].details}</Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 export default Education;

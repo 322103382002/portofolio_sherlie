@@ -22,7 +22,40 @@
 body, html, .portfolio-app {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+}
+/* Ensure full-height so the snap container can use viewport height correctly */
+html, body, #root {
+  height: 100%;
+}
+
+/* Content wrapper for centering */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* Scroll snapping container */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  height: calc(100vh - 64px); /* account for a sticky navbar ~64px */
+  scroll-behavior: smooth;
+}
+
+/* Each section snaps to start and fills viewport minus navbar */
+.snap-section {
+  scroll-snap-align: start;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 section {
   padding: 60px 0;
@@ -41,7 +74,7 @@ section {
   padding: 18px 32px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1200;
 }
 .navbar-nav {
   display: flex;
@@ -77,6 +110,33 @@ section {
   cursor: pointer;
   z-index: 999;
   opacity: 0.8;
+}
+
+/* Theme toggle fixed button, high z-index and responsive repositioning */
+.theme-toggle {
+  position: fixed !important;
+  top: 12px;
+  right: 12px;
+  z-index: 2000;
+  background: transparent;
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    top: auto;
+    bottom: 14px;
+    right: 14px;
+  }
+  .snap-container { height: calc(100vh - 56px); }
+  .snap-section { padding: 28px 12px; }
+}
+
+/* Floating / sticky card used in education, certifications, projects */
+.floating-card {
+  position: sticky;
+  top: 18vh; /* stick near the middle so it's partially visible while scrolling */
+  z-index: 800;
 }
 .section-title {
   font-weight: 700;
